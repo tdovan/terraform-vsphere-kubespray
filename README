@@ -1,0 +1,12 @@
+# Based on https://blog.inkubate.io/install-and-manage-automatically-a-kubernetes-cluster-on-vmware-vsphere-with-terraform-and-kubespray/
+# Notes
+#	- type on sudo command: tdovan ALL=(ALL:ALL) NOPASSWD: ALL
+#	- need to do for ubuntu-1810 and coreos
+#	- need 1024m for master and worker
+#	- need vcenter and esx
+
+1/ Validate terraform config
+terraform init
+terraform plan
+terraform apply
+

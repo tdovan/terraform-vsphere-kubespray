@@ -450,6 +450,14 @@ resource "vsphere_virtual_machine" "master" {
     unit_number      = 0
   }
 
+  disk {
+    label            = "${var.vm_name_prefix}-master-${count.index}.1.vmdk"
+    size             = "${data.vsphere_virtual_machine.template.disks.1.size}"
+    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.1.eagerly_scrub}"
+    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.1.thin_provisioned}"
+    unit_number      = 1
+  }
+
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
@@ -512,6 +520,13 @@ resource "vsphere_virtual_machine" "worker" {
     unit_number      = 0
   }
 
+  disk {
+    label            = "${var.vm_name_prefix}-worker-${count.index}.1.vmdk"
+    size             = "${data.vsphere_virtual_machine.template.disks.1.size}"
+    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.1.eagerly_scrub}"
+    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.1.thin_provisioned}"
+    unit_number      = 1
+  }
 
   clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
@@ -582,6 +597,13 @@ resource "vsphere_virtual_machine" "haproxy" {
     unit_number      = 0
   }
 
+  disk {
+    label            = "${var.vm_name_prefix}-worker-${count.index}.1.vmdk"
+    size             = "${data.vsphere_virtual_machine.template.disks.1.size}"
+    eagerly_scrub    = "${data.vsphere_virtual_machine.template.disks.1.eagerly_scrub}"
+    thin_provisioned = "${data.vsphere_virtual_machine.template.disks.1.thin_provisioned}"
+    unit_number      = 1
+  }
 
 
   clone {

@@ -35,7 +35,7 @@ vsphere_vcp_datastore = "datastore1"
 
 # Username used to SSH to the virtual machines #
 vm_user = "tdovan"
-vm_password = "hpinvent"
+vm_password = "Try&More"
 
 # The linux distribution used by the virtual machines (ubuntu/debian/centos/rhel) #
 vm_distro = "ubuntu"
@@ -50,24 +50,22 @@ vm_folder = "kubernetes-kubespray"
 vm_datastore = "datastore1"
 
 # The vSphere network name used by the virtual machines #
-vm_network = "VM Network"
+vm_network = "k8s-mgmt"
 
 # The netmask used to configure the network cards of the virtual machines (example: 24)#
 vm_netmask = "24"
 
 # The network gateway used by the virtual machines #
-vm_gateway = "192.168.1.1"
+vm_gateway = "10.202.115.1"
 
 # The DNS server used by the virtual machines #
-vm_dns = "192.168.1.1"
+vm_dns = "10.202.115.11"
 
 # The domain name used by the virtual machines #
 vm_domain = "k8s.tdovan.co"
 
 # The vSphere template the virtual machine are based on #
-#vm_template = "template/worker-1"
-vm_template = "template/k8s-ubuntu-1604"
-#
+vm_template = "template/worker-1"
 
 # Use linked clone (true/false)
 vm_linked_clone = "false"
@@ -80,11 +78,13 @@ vm_linked_clone = "false"
 vm_master_cpu = "1"
 
 # The amount of RAM allocated to the master virtual machines #
-vm_master_ram = "2048"
+vm_master_ram = "1024"
 
 # The IP addresses of the master virtual machines. You need to define 3 IPs for the masters #
 vm_master_ips = {
-  "0" = "192.168.1.161"
+  "0" = "10.202.115.51"
+  "1" = "10.202.115.52"
+  "2" = "10.202.115.53"
 }
 
 #===============================================================================
@@ -95,11 +95,13 @@ vm_master_ips = {
 vm_worker_cpu = "1"
 
 # The amount of RAM allocated to the worker virtual machines #
-vm_worker_ram = "2048"
+vm_worker_ram = "1024"
 
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
-  "0" = "192.168.1.171"
+  "0" = "10.202.115.61"
+  "1" = "10.202.115.62"
+  "2" = "10.202.115.63"
 }
 
 #===============================================================================
@@ -110,16 +112,16 @@ vm_worker_ips = {
 vm_haproxy_cpu = "1"
 
 # The amount of RAM allocated to the load balancer virtual machine #
-vm_haproxy_ram = "512"
+vm_haproxy_ram = "1024"
 
 
 # The IP address of the load balancer floating VIP #
-vm_haproxy_vip = "192.168.1.181"
+vm_haproxy_vip = "10.202.115.71"
 
 # The IP address of the load balancer virtual machine #
 vm_haproxy_ips = {
-  "0" = "192.168.1.182"
-  "1" = "192.168.1.183"
+  "0" = "10.202.115.72"
+  "1" = "10.202.115.73"
 }
 
 #===============================================================================
@@ -140,14 +142,10 @@ rh_password = ""
 k8s_kubespray_url = "https://github.com/kubernetes-sigs/kubespray.git"
 
 # The version of Kubespray that will be used to deploy Kubernetes #
-#k8s_kubespray_version = "v2.10.3"
-k8s_kubespray_version = "v2.10.4"
-
+k8s_kubespray_version = "v2.10.3"
 
 # The Kubernetes version that will be deployed #
 k8s_version = "v1.14.3"
-#k8s_version = "v1.15.0"
-
 
 # The overlay network plugin used by the Kubernetes cluster #
 k8s_network_plugin = "calico"
