@@ -73,11 +73,12 @@ variable "vm_user" {
 
 variable "vm_password" {
   description = "SSH password for the vSphere virtual machines"
+  default     = "ITAdmin1234"
 }
 
 variable "vm_privilege_password" {
   description = "Sudo or su password for the vSphere virtual machines"
-  default     = "hpinvent"
+  default     = "ITAdmin1234"
 }
 
 variable "vm_distro" {

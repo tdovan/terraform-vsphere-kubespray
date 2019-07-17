@@ -15,7 +15,7 @@ vsphere_unverified_ssl = "true"
 vsphere_datacenter = "Plexxi"
 
 # vSphere cluster name where the infrastructure will be deployed #
-vsphere_drs_cluster = "plexxi"
+vsphere_drs_cluster = "Plexxi"
 
 # vSphere resource pool name that will be created to deploy the virtual machines #
 vsphere_resource_pool = "kubernetes-kubespray"
@@ -35,7 +35,7 @@ vsphere_vcp_datastore = "datastore1"
 
 # Username used to SSH to the virtual machines #
 vm_user = "tdovan"
-vm_password = "hpinvent"
+vm_password = "ITAdmin1234"
 
 # The linux distribution used by the virtual machines (ubuntu/debian/centos/rhel) #
 vm_distro = "ubuntu"
@@ -47,26 +47,26 @@ vm_name_prefix = "k8s-kubespray"
 vm_folder = "kubernetes-kubespray"
 
 # The datastore name used to store the files of the virtual machines #
-vm_datastore = "datastore1"
+vm_datastore = "datastore1 (1)"
 
 # The vSphere network name used by the virtual machines #
-vm_network = "VM Network"
+vm_network = "DPortGroupManagement"
 
 # The netmask used to configure the network cards of the virtual machines (example: 24)#
 vm_netmask = "24"
 
 # The network gateway used by the virtual machines #
-vm_gateway = "192.168.1.1"
+vm_gateway = "10.6.53.1"
 
 # The DNS server used by the virtual machines #
-vm_dns = "192.168.1.1"
+vm_dns = "10.6.53.19"
 
 # The domain name used by the virtual machines #
-vm_domain = "k8s.tdovan.co"
+vm_domain = "vmware.hpecic.net"
 
 # The vSphere template the virtual machine are based on #
 #vm_template = "template/worker-1"
-vm_template = "template/k8s-ubuntu-1604"
+vm_template = "IAC/template/k8s-ubuntu1604-template"
 #
 
 # Use linked clone (true/false)
@@ -84,7 +84,9 @@ vm_master_ram = "2048"
 
 # The IP addresses of the master virtual machines. You need to define 3 IPs for the masters #
 vm_master_ips = {
-  "0" = "192.168.1.161"
+  "0" = "10.6.53.201"
+  "1" = "10.6.53.202"
+  "2" = "10.6.53.203"
 }
 
 #===============================================================================
@@ -99,7 +101,9 @@ vm_worker_ram = "2048"
 
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
-  "0" = "192.168.1.171"
+  "0" = "10.6.53.211"
+  "1" = "10.6.53.212"
+  "2" = "10.6.53.213"
 }
 
 #===============================================================================
@@ -110,16 +114,16 @@ vm_worker_ips = {
 vm_haproxy_cpu = "1"
 
 # The amount of RAM allocated to the load balancer virtual machine #
-vm_haproxy_ram = "512"
+vm_haproxy_ram = "1024"
 
 
 # The IP address of the load balancer floating VIP #
-vm_haproxy_vip = "192.168.1.181"
+vm_haproxy_vip = "10.6.53.221"
 
 # The IP address of the load balancer virtual machine #
 vm_haproxy_ips = {
-  "0" = "192.168.1.182"
-  "1" = "192.168.1.183"
+  "0" = "10.6.53.222"
+  "1" = "10.6.53.224"
 }
 
 #===============================================================================
@@ -153,7 +157,7 @@ k8s_version = "v1.14.3"
 k8s_network_plugin = "calico"
 
 # If you use Weavenet as an overlay network, you need to specify an encryption password #
-k8s_weave_encryption_password = "hpinvent"
+k8s_weave_encryption_password = "ITAdmin123"
 
 # The DNS service used by the Kubernetes cluster (coredns/kubedns) #
 k8s_dns_mode = "coredns"
