@@ -85,5 +85,5 @@ resource "null_resource" "kubespray_create" {
 FIX3: sshpass issue
 
 FIX4: rsync issue
-comment out playbook ansible/kubespray/roles/download/tasks/kubeadm_images.yml
-
+comment out : playbook ansible/kubespray/roles/download/tasks/kubeadm_images.yml
+comment out : ansible/kubespray/extra_playbooks/roles/kubernetes/node/tasks/install.yml
