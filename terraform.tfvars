@@ -27,7 +27,7 @@ vsphere_enable_anti_affinity = "false"
 vsphere_vcp_user = "k8s-vcp@vsphere.local"
 
 # vSphere datastore name where the Kubernetes persistant volumes will be created #
-vsphere_vcp_datastore = "datastore1"
+vsphere_vcp_datastore = "datastore1 (1)"
 
 #===============================================================================
 # Global virtual machines parameters
@@ -59,7 +59,7 @@ vm_netmask = "24"
 vm_gateway = "10.6.53.1"
 
 # The DNS server used by the virtual machines #
-vm_dns = "10.6.53.19"
+vm_dns = "10.11.0.13"
 
 # The domain name used by the virtual machines #
 vm_domain = "vmware.hpecic.net"
@@ -86,7 +86,7 @@ vm_master_ram = "2048"
 vm_master_ips = {
   "0" = "10.6.53.201"
   "1" = "10.6.53.202"
-  "2" = "10.6.53.203"
+#  "2" = "10.6.53.203"
 }
 
 #===============================================================================

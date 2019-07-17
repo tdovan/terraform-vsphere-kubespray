@@ -10,6 +10,76 @@ terraform init
 terraform plan
 terraform apply
 
+kubectl --kubeconfig config/admin.conf get nodes
 
-## FIX kubespray install using sshpass
-apt install sshpass
+# Scaling
+vim terraform.tfvars
+...
+k8s_worker_ips = {
+  "0" = "10.10.40.120"
+  "1" = "10.10.40.121"
+  "2" = "10.10.40.122"
+  "3" = "10.10.40.123"
+}
+terraform apply -var 'action=add_worker'
+ kubectl --kubeconfig config/admin.conf get nodes
+
+# Remove node
+vim terraform.tfvars
+terraform apply -var 'action=remove_worker'
+
+# upgrading the cluster
+vim terraform.tfvars
+k8s_version = "v1.10.3"
+watch -n 1 kubectl --kubeconfig ~/terraform-vsphere-kubespray/config/admin.conf get nodes
+terraform apply -var 'action=upgrade'
+
+# check vSphere Provider
+vim redis-sc.yaml
+kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: thin-disk
+provisioner: kubernetes.io/vsphere-volume
+parameters:
+    diskformat: thin
+
+$ kubectl --kubeconfig ~/terraform-vsphere-kubespray/config/admin.conf apply -f redis-sc.yaml
+
+$ vim redis-master-claim.yaml
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: redis-master-claim
+  annotations:
+    volume.beta.kubernetes.io/storage-class: thin-disk
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+
+$ kubectl --kubeconfig ~/terraform-vsphere-kubespray/config/admin.conf apply -f redis-master-claim.yaml
+
+
+FIX0: timeout on container download
+vi /home/tdovan/workspace/github/terraform-vsphere-kubespray/ansible/kubespray/roles/download/tasks/download_container.yml
+and comment 
+  #delegate_to: "{{ download_delegate if download_run_once or omit }}"
+  #delegate_facts: yes
+
+
+## FIX1: kubespray install using sshpass
+ansible-playbook playbook/install-sshpass.yaml -i config/hosts.ini -e "ansible_ssh_pass=ITAdmin1234 ansible_become_pass=ITAdmin1234"
+
+## FIX2:
+edit vsphere-kubespray.tf: add -e ignore_assert_errors=yes 
+# Execute create Kubespray Ansible playbook #
+resource "null_resource" "kubespray_create" {
+  count = "${var.action == "create" ? 1 : 0}"
+
+  provisioner "local-exec" {
+    command = "cd ansible/kubespray && ansible-playbook -i ../../config/hosts.ini -b -u ${var.vm_user} -e ignore_assert_errors=yes -e \"ansible_ssh_pass=$VM_PASSWORD ansible_become_pass=$VM_PRIVILEGE_PASSWORD kube_version=${var.k8s_version}\" ${lookup(local.extra_args, var.vm_distro)} -v cluster.yml"
+
+FIX3: sshpass issue
