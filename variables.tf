@@ -4,11 +4,12 @@
 
 variable "vsphere_user" {
   description = "vSphere user name"
+  default     = "plexxiAdmin@vsphere.local"
 }
 
 variable "vsphere_password" {
   description = "vSphere password"
-  default     = "Try&More012"
+  default     = "Plexxi@cic1234"
 }
 
 variable "vsphere_vcenter" {
@@ -43,7 +44,7 @@ variable "vsphere_vcp_user" {
 
 variable "vsphere_vcp_password" {
   description = "vSphere password for the Kubernetes vSphere Cloud Provider plugin"
-  default     = "Try&More012"
+  default     = "Plexxi@cic1234"
 }
 
 variable "vsphere_vcp_datastore" {

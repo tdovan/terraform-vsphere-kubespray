@@ -3,19 +3,19 @@
 #===============================================================================
 
 # vCenter IP or FQDN #
-vsphere_vcenter = "192.168.1.81"
+vsphere_vcenter = "10.6.53.10"
 
 # vSphere username used to deploy the infrastructure #
-vsphere_user = "administrator@tdovan.co"
+vsphere_user = "plexxiAdmin@vsphere.local"
 
 # Skip the verification of the vCenter SSL certificate (true/false) #
 vsphere_unverified_ssl = "true"
 
 # vSphere datacenter name where the infrastructure will be deployed #
-vsphere_datacenter = "DC1"
+vsphere_datacenter = "Plexxi"
 
 # vSphere cluster name where the infrastructure will be deployed #
-vsphere_drs_cluster = "k8s"
+vsphere_drs_cluster = "plexxi"
 
 # vSphere resource pool name that will be created to deploy the virtual machines #
 vsphere_resource_pool = "kubernetes-kubespray"
