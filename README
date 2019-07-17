@@ -10,3 +10,6 @@ terraform init
 terraform plan
 terraform apply
 
+
+## FIX kubespray install using sshpass
+apt install sshpass
