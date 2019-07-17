@@ -83,3 +83,7 @@ resource "null_resource" "kubespray_create" {
     command = "cd ansible/kubespray && ansible-playbook -i ../../config/hosts.ini -b -u ${var.vm_user} -e ignore_assert_errors=yes -e \"ansible_ssh_pass=$VM_PASSWORD ansible_become_pass=$VM_PRIVILEGE_PASSWORD kube_version=${var.k8s_version}\" ${lookup(local.extra_args, var.vm_distro)} -v cluster.yml"
 
 FIX3: sshpass issue
+
+FIX4: rsync issue
+comment out playbook ansible/kubespray/roles/download/tasks/kubeadm_images.yml
+
