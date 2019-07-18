@@ -87,3 +87,6 @@ FIX3: sshpass issue
 FIX4: rsync issue
 comment out : playbook ansible/kubespray/roles/download/tasks/kubeadm_images.yml
 comment out : ansible/kubespray/extra_playbooks/roles/kubernetes/node/tasks/install.yml
+
+FIX5: LoadB
+vi templates/keepalived_master.tpl and set ens160 (vs ens192)

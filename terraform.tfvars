@@ -85,7 +85,7 @@ vm_master_ram = "2048"
 # The IP addresses of the master virtual machines. You need to define 3 IPs for the masters #
 vm_master_ips = {
   "0" = "10.6.53.201"
-  "1" = "10.6.53.202"
+#  "1" = "10.6.53.202"
 #  "2" = "10.6.53.203"
 }
 
@@ -102,8 +102,8 @@ vm_worker_ram = "2048"
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
   "0" = "10.6.53.211"
-  "1" = "10.6.53.212"
-  "2" = "10.6.53.213"
+#  "1" = "10.6.53.212"
+#  "2" = "10.6.53.213"
 }
 
 #===============================================================================
