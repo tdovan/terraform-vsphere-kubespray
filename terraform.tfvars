@@ -101,9 +101,9 @@ vm_worker_ram = "2048"
 
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
-  "0" = "10.6.53.258"
-#  "1" = "10.6.53.259"
-#  "2" = "10.6.53.260"
+  "0" = "10.6.53.158"
+#  "1" = "10.6.53.159"
+#  "2" = "10.6.53.160"
 }
 
 #===============================================================================
