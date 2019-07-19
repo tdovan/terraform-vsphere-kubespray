@@ -5,6 +5,26 @@
 #	- need 1024m for master and worker
 #	- need vcenter and esx
 
+
+### GVA Environnement
+IP		Name			Role
+10.6.53.151	infra-as-code		Control Node ansible-terraform
+10.6.53.152	k8s-kubespray-haproxy-0	VIP ha-proxy
+10.6.53.153	k8s-kubespray-haproxy-0	enpoint haproxy-0
+10.6.53.154	k8s-kubespray-haproxy-1	enpoint haproxy-1
+10.6.53.155	k8s-kubespray-master-0	k8s master-0
+10.6.53.156	k8s-kubespray-master-1	k8s master-1
+10.6.53.157	k8s-kubespray-master-2	k8s master-2
+10.6.53.158	k8s-kubespray-worker-0	k8s worker-0
+10.6.53.159	k8s-kubespray-worker-1	k8s worker-1
+10.6.53.160	k8s-kubespray-worker-2	k8s worker-2
+10.6.53.161	reserved
+10.6.53.162	reserved
+10.6.53.163	reserved
+10.6.53.164	reserved
+10.6.53.165	reserved
+
+
 1/ Validate terraform config
 terraform init
 terraform plan
@@ -90,3 +110,9 @@ comment out : ansible/kubespray/extra_playbooks/roles/kubernetes/node/tasks/inst
 
 FIX5: LoadB
 vi templates/keepalived_master.tpl and set ens160 (vs ens192)
+
+FIX6: delegate
+to solve ansible delegate issue: export ANSIBLE_INVALID_TASK_ATTRIBUTE_FAILED=False
+
+FIX7: ansible issue : install 2.7
+pip install ansible==2.7

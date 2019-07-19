@@ -27,7 +27,7 @@ vsphere_enable_anti_affinity = "false"
 vsphere_vcp_user = "k8s-vcp@vsphere.local"
 
 # vSphere datastore name where the Kubernetes persistant volumes will be created #
-vsphere_vcp_datastore = "datastore1 (1)"
+vsphere_vcp_datastore = "datastore1"
 
 #===============================================================================
 # Global virtual machines parameters
@@ -47,7 +47,7 @@ vm_name_prefix = "k8s-kubespray"
 vm_folder = "kubernetes-kubespray"
 
 # The datastore name used to store the files of the virtual machines #
-vm_datastore = "datastore1 (1)"
+vm_datastore = "datastore1"
 
 # The vSphere network name used by the virtual machines #
 vm_network = "DPortGroupManagement"
@@ -84,9 +84,9 @@ vm_master_ram = "2048"
 
 # The IP addresses of the master virtual machines. You need to define 3 IPs for the masters #
 vm_master_ips = {
-  "0" = "10.6.53.201"
-#  "1" = "10.6.53.202"
-#  "2" = "10.6.53.203"
+  "0" = "10.6.53.155"
+#  "1" = "10.6.53.156"
+#  "2" = "10.6.53.157"
 }
 
 #===============================================================================
@@ -101,9 +101,9 @@ vm_worker_ram = "2048"
 
 # The IP addresses of the master virtual machines. You need to define 1 IP or more for the workers #
 vm_worker_ips = {
-  "0" = "10.6.53.211"
-#  "1" = "10.6.53.212"
-#  "2" = "10.6.53.213"
+  "0" = "10.6.53.258"
+#  "1" = "10.6.53.259"
+#  "2" = "10.6.53.260"
 }
 
 #===============================================================================
@@ -118,12 +118,12 @@ vm_haproxy_ram = "1024"
 
 
 # The IP address of the load balancer floating VIP #
-vm_haproxy_vip = "10.6.53.221"
+vm_haproxy_vip = "10.6.53.152"
 
 # The IP address of the load balancer virtual machine #
 vm_haproxy_ips = {
-  "0" = "10.6.53.222"
-  "1" = "10.6.53.224"
+  "0" = "10.6.53.153"
+  "1" = "10.6.53.154"
 }
 
 #===============================================================================
